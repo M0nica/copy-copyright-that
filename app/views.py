@@ -26,14 +26,16 @@ def calculate():
 
 def results(business_name):
     # searches https://domainsdb.info/apidomainsdb/ to determine if domain is available
-    # cctld = country code top-level domain (ccTLD) 
-    response = requests.get('https://api.domainsdb.info/search?query=' + business_name + '&tld=cctld')
+    # cctld = country code top-level domain (ccTLD)
+    response = requests.get('https://api.domainsdb.info/search?query=' + business_name +  '.com&tld=cctld')
     data = response.json()
 
     if data['total'] == 0:
-        domain_availability = "available"
+        domain_availability = str(business_name + ".com") + " is available"
+    # elif data['domains'][0] == str(business_name + ".com"):
+    #     domain_availibility = business_name + ".com is not available"
     else:
-        domain_availability = "not available"
+        domain_availability =  str(data['domains'][0] + " not available")
 
     # print(data)
     business_name = business_name
