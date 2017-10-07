@@ -26,7 +26,8 @@ def calculate():
 
 def results(business_name):
     # searches https://domainsdb.info/apidomainsdb/ to determine if domain is available
-    response = requests.get('https://api.domainsdb.info/search?query=' + business_name + '&tld=all')
+    # cctld = country code top-level domain (ccTLD) 
+    response = requests.get('https://api.domainsdb.info/search?query=' + business_name + '&tld=cctld')
     data = response.json()
 
     if data['total'] == 0:
